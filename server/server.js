@@ -1,12 +1,11 @@
 const express = require('express');
 require('dotenv').config()
-const app = express();
+const app = express(); 
+const userRouter=require('./routes/UserRouter');
+const dbConfig = require("./config/dbConfig");
 
-/*const port = 8080; // Change the port number
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-*/
+app.use(express.json());
+app.use('/api/users',userRouter);
 
 app.listen(process.env.PORT, () => {
     console.log(`server is listening to port ${process.env.PORT}`);
